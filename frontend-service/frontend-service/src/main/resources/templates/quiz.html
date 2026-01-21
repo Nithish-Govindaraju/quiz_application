@@ -1,0 +1,40 @@
+<form action="/quiz/submit" method="post">
+
+    <input type="hidden" name="id" th:value="${id}" />
+
+    <div th:each="q, stat : ${questions}">
+
+        <p>
+            <b th:text="${stat.index + 1} + '. ' + ${q.questionTitle}"></b>
+        </p>
+
+        <input type="radio"
+               th:name="'responses[' + ${stat.index} + '].response'"
+               th:value="${q.option1}" required />
+        <span th:text="${q.option1}"></span><br>
+
+        <input type="radio"
+               th:name="'responses[' + ${stat.index} + '].response'"
+               th:value="${q.option2}" />
+        <span th:text="${q.option2}"></span><br>
+
+        <input type="radio"
+               th:name="'responses[' + ${stat.index} + '].response'"
+               th:value="${q.option3}" />
+        <span th:text="${q.option3}"></span><br>
+
+        <input type="radio"
+               th:name="'responses[' + ${stat.index} + '].response'"
+               th:value="${q.option4}" />
+        <span th:text="${q.option4}"></span><br>
+
+        <input type="hidden"
+               th:name="'responses[' + ${stat.index} + '].id'"
+               th:value="${q.id}" />
+
+        <hr>
+    </div>
+
+    <button type="submit">Submit Quiz</button>
+
+</form>

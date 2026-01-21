@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz App</title>
+</head>
+<body>
+
+<h1>Available Quizzes</h1>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="quiz : ${quizzes}">
+        <td th:text="${quiz.id}"></td>
+        <td th:text="${quiz.title}"></td>
+        <td>
+            <a th:href="@{/quiz/start/{id}(id=${quiz.id})}">Start</a>
+        </td>
+    </tr>
+</table>
+
+<br>
+<a href="/quiz/create">Create New Quiz</a>
+
+</body>
+</html>
